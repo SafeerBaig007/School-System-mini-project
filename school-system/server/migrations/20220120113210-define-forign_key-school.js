@@ -1,0 +1,33 @@
+'use strict';
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    /**
+     * Add altering commands here.
+     *
+     * Example:
+     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     */
+     queryInterface.addConstraint('schools', {
+      fields: ['admin_id'],
+      type: 'foreign key',
+      name: 'define-foregin_key-schools',
+      references: { //Required field
+        table: 'admins',
+        field: 'admin_id'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    });
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
+    queryInterface.removeConstraint('schools', 'define-foregin_key-schools' )
+  }
+};
