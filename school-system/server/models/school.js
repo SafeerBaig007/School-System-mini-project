@@ -17,9 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       school.hasMany(models.user, {
         foreignKey : 'school_id'
       })
-      school.hasMany(models.class_room,{
-        foreignKey : 'school_id'
-      })
     }
   };
   school.init({

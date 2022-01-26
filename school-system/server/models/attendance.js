@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   attendance.init({
-    attendance_date: DataTypes.DATE,
+    attendance_date: DataTypes.DATEONLY,
     remark: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       admin.hasOne(models.school, {
-        foreignKey : 'admin_id'
+        foreignKey : 'admin_id',
       })
     }
   };
@@ -52,6 +52,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: {
       type : DataTypes.STRING,
+      unique: true,
       allowNull: false,
       validate:{
         isEmail : true,
@@ -59,10 +60,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: {
       type : DataTypes.STRING,
-      allowNull : true,
+      allowNull : false,
       validate:{
         len: [6, 64]
       }
+    },
+    token : {
+      type : DataTypes.STRING
     }
   }, {
     sequelize,

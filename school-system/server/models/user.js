@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       user.hasMany(models.attendance,{
         foreignKey : 'user_id'
       })
-      user.belongsToMany(models.class_room,{through : 'class_room_user'})
       // define association here
     }
   };
@@ -28,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: {
       type : DataTypes.STRING,
+      unique: true,
       allowNull : false,
       validate : {
         isEmail : true
@@ -48,12 +48,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     dob: {
-      type : DataTypes.STRING,
+      type : DataTypes.DATE,
       allowNull: false,
     },
     join_date: {
-      type : DataTypes.STRING,
-      allowNull : false,
+      type : DataTypes.DATE,
+      allowNull : true,
     },
     first_name: {
       allowNull: false,

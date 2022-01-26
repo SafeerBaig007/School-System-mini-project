@@ -28,6 +28,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    queryInterface.addConstraint('users', 'define-foregin_key-users-school_id')
+    queryInterface.removeConstraint('users', 'define-foregin_key-users-school_id')
   }
 };
